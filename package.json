@@ -1,0 +1,25 @@
+{
+    "name": "vivian",
+    "displayName": "vivan",
+    "description": "",
+    "version": "0.0.1",
+    "engines": {
+        "vscode": "^1.53.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "contributes": {
+        "languages": [{
+            "id": "vivian",
+            "aliases": ["viv", "vivian"],
+            "extensions": [".viv"],
+            "configuration": "./language-configuration.json"
+        }],
+        "grammars": [{
+            "language": "vivian",
+            "scopeName": "source.viv",
+            "path": "./syntaxes/vivian.tmLanguage.json"
+        }]
+    }
+}

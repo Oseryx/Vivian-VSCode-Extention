@@ -1,0 +1,261 @@
+{
+    "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+    "name": "vivan",
+    "patterns": [{
+            "include": "#keywords"
+        },
+        {
+            "include": "#strings"
+        },
+        {
+            "include": "#chars"
+        },
+        {
+            "include": "#operators"
+        },
+        {
+            "include": "#digits"
+        },
+        {
+            "include": "#types"
+        },
+        {
+            "include": "#ECS"
+        },
+        {
+            "include": "#procedures"
+        },
+        {
+            "include": "#booleans"
+        },
+        {
+            "include": "#variables-readwrite"
+        },
+        {
+            "include": "#variables-constant"
+        },
+        {
+            "include": "#varsAndProps"
+        },
+        {
+            "include": "#comments"
+        }
+    ],
+    "repository": {
+        "keywords": {
+            "patterns": [{
+                "name": "keyword.control.vivian",
+                "match": "\\b(constructor|if|else|do|while|for|break|continue|return|this)\\b"
+            }]
+        },
+        "strings": {
+            "name": "string.quoted.double.vivian",
+            "begin": "\"",
+            "end": "\"",
+            "patterns": [{
+                "name": "constant.character.escape.vivian",
+                "match": "\\\\."
+            }]
+        },
+        "chars": {
+            "name": "string.quoted.single.vivian",
+            "begin": "'",
+            "end": "'",
+            "patterns": [{
+                "match": "."
+            }]
+        },
+        "operators": {
+            "patterns": [{
+                "name": "keyword.operator.assignment.vivian",
+                "match": "(\\s*(<|\\+|\\-|\\||\\*|\\%|\\&|!)\\s*)|(\\s*([^*/]{1}\\s*[/]{1}\\s*[^/*]{1})\\s*)"
+            }, {
+                "name": "keyword.operator.assignment.vivian",
+                "match": "([^=:]?>)|(=([^>]|\\z))"
+            }]
+        },
+        "digits": {
+            "name": "constant.numeric.decimal.vivian",
+            "match": "(\\b[0-9][0-9_]*(n)?\\b(?!\\.))|(\\b[0-9][0-9_]*(\\.)[0-9][0-9_]*(n)?\\b)|(\\b[0-9][0-9_]*(\\.)(n)?\\B)|(\\B(\\.)[0-9][0-9_]*(n)?\\b)"
+        },
+        "booleans": {
+            "name": "constant.language.boolean.vivian",
+            "match": "\\b(true|false)\\b"
+        },
+        "variables-readwrite": {
+            "patterns": [{
+                "name": "support.variable.vivian",
+                "begin": "\\b(let|var)\\b",
+                "end": "(\\s)*(\\w*)",
+                "beginCaptures": {
+                    "0": {
+                        "name": "keyword.control.vivian"
+                    }
+                },
+                "endCaptures": {
+                    "0": {
+                        "name": "variable.other.readwrite.vivian"
+                    }
+                }
+            }]
+        },
+        "variables-constant": {
+            "name": "support.variable.vivian",
+            "begin": "\\b(const)\\b",
+            "end": "(\\s)*(\\w*)",
+            "beginCaptures": {
+                "0": {
+                    "name": "keyword.control.vivian"
+                }
+            },
+            "endCaptures": {
+                "0": {
+                    "name": "variable.other.constant.vivian"
+                }
+            }
+        },
+        "types": {
+            "name": "support.type.vivian",
+            "begin": ":|=>\\s*",
+            "end": "\\s*(\\w*)",
+            "beginCaptures": {
+                "0": {
+                    "patterns": [{
+                        "name": "keyword.operator.assignment.vivian",
+                        "match": "=>\\s*"
+                    }]
+                }
+            },
+            "endCaptures": {
+                "0": {
+                    "patterns": [{
+                        "name": "support.type.primitive.vivian",
+                        "match": "object|bool|char|int8|int16|int32|int64|uint8|uint16|uint32|uint64|float32|float64|decimal|string|void"
+                    }]
+                }
+            }
+        },
+        "ECS": {
+            "patterns": [{
+                    "include": "#class"
+                },
+                {
+                    "include": "#enum"
+                },
+                {
+                    "include": "#struct"
+                }
+            ]
+        },
+        "procedures": {
+            "patterns": [{
+                    "begin": "\\b(procedure\\s+)\\b",
+                    "end": "\\s*(\\w*)",
+                    "beginCaptures": {
+                        "0": {
+                            "name": "keyword.control.vivian"
+                        }
+                    },
+                    "endCaptures": {
+                        "0": {
+
+                            "name": "entity.name.function.vivian"
+                        }
+                    }
+                },
+                {
+
+                    "include": "#proceduresVar"
+                }
+            ]
+        },
+        "varsAndProps": {
+            "patterns": [{
+                    "match": "(\\w)*\\(",
+                    "captures": {
+                        "0": {
+                            "patterns": [{
+                                "name": "entity.name.function.vivian",
+                                "match": "(\\w)*[^(]"
+                            }]
+                        }
+                    }
+                },
+                {
+                    "name": "variable.other.readwrite",
+                    "match": "(\\w)*[^\\W]"
+                }
+            ]
+        },
+        "proceduresVar": {
+            "begin": "(\\(|,)\\s*",
+            "end": "(\\w)*",
+            "endCaptures": {
+                "0": {
+                    "name": "variable.other.readwrite.vivian"
+                }
+            }
+        },
+        "class": {
+            "name": "support.type.vivian",
+            "begin": "\\b((class)\\s+)\\b",
+            "end": "\\s*(\\w*)",
+            "beginCaptures": {
+                "0": {
+                    "name": "keyword.control.vivian"
+                }
+            },
+            "endCaptures": {
+                "0": {
+                    "patterns": [{
+                        "name": "entity.name.type.class.vivian",
+                        "match": "\\b(\\w*)\\b"
+                    }]
+                }
+            }
+        },
+        "enum": {
+            "name": "support.type.vivian",
+            "begin": "\\b((enum)\\s+)\\b",
+            "end": "\\s*(\\w*)",
+            "beginCaptures": {
+                "0": {
+                    "name": "keyword.control.vivian"
+                }
+            },
+            "endCaptures": {
+                "0": {
+                    "patterns": [{
+                        "name": "entity.name.type.enum.vivian",
+                        "match": "\\b(\\w*)\\b"
+                    }]
+                }
+            }
+        },
+        "struct": {
+            "name": "support.type.vivian",
+            "begin": "\\b((struct)\\s+)\\b",
+            "end": "\\s*(\\w*)",
+            "beginCaptures": {
+                "0": {
+                    "name": "keyword.control.vivian"
+                }
+            },
+            "endCaptures": {
+                "0": {
+                    "patterns": [{
+                        "name": "entity.name.type.struct.vivian",
+                        "match": "\\b(\\w*)\\b"
+                    }]
+                }
+            }
+        },
+        "comments": {
+            "patterns": [{
+                "match": "\\/\\/(.)*",
+                "name": "comment.line.double-slash.vivian"
+            }]
+        }
+    },
+    "scopeName": "source.viv"
+}
