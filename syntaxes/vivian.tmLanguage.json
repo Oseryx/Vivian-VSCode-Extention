@@ -39,6 +39,9 @@
         },
         {
             "include": "#comments"
+        },
+        {
+            "include": "#multiline-comments"
         }
     ],
     "repository": {
@@ -255,6 +258,11 @@
                 "match": "\\/\\/(.)*",
                 "name": "comment.line.double-slash.vivian"
             }]
+        },
+        "multiline-comments": {
+            "begin": "(/\\*)(?:\\s*((@)internal)(?=\\s|(\\*/)))?",
+            "end": "\\*/",
+            "name": "comment.block"
         }
     },
     "scopeName": "source.viv"
