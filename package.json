@@ -10,6 +10,7 @@
     "categories": [
         "Programming Languages"
     ],
+    "publisher": "WaifyShork",
     "contributes": {
         "languages": [{
             "id": "vivian",
