@@ -5,6 +5,9 @@
             "include": "#keywords"
         },
         {
+            "include": "#modules"
+        },
+        {
             "include": "#strings"
         },
         {
@@ -48,7 +51,7 @@
         "keywords": {
             "patterns": [{
                 "name": "keyword.control.vivian",
-                "match": "\\b(constructor|if|else|do|while|for|break|continue|return|this)\\b"
+                "match": "\\b(construct|if|else|do|while|for|break|continue|return|this)\\b"
             }]
         },
         "strings": {
@@ -263,6 +266,43 @@
             "begin": "(/\\*)(?:\\s*((@)internal)(?=\\s|(\\*/)))?",
             "end": "\\*/",
             "name": "comment.block"
+        },
+        "modules": {
+            "patterns": [{
+                    "include": "#imports"
+                },
+                {
+                    "include": "#namespaces"
+                }
+            ]
+        },
+        "imports": {
+            "begin": "\\b(import)\\b",
+            "end": "\\b(\\w+)\\b",
+            "beginCaptures": {
+                "0": {
+                    "name": "keyword.control.vivian"
+                }
+            },
+            "endCaptures": {
+                "0": {
+                    "name": "entity.name.type.import"
+                }
+            }
+        },
+        "namespaces": {
+            "begin": "\\b(module)\\b",
+            "end": "\\b(\\w+)\\b",
+            "beginCaptures": {
+                "0": {
+                    "name": "keyword.control.vivian"
+                }
+            },
+            "endCaptures": {
+                "0": {
+                    "name": "entity.name.type.namespace"
+                }
+            }
         }
     },
     "scopeName": "source.viv"
