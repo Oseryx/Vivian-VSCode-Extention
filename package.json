@@ -3,6 +3,7 @@
     "displayName": "vivian",
     "description": "",
     "version": "0.0.1",
+    "icon": "./icon/logo.png",
     "engines": {
         "vscode": "^1.53.0"
     },
