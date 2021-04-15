@@ -2,7 +2,7 @@
     "name": "vivian",
     "displayName": "vivian",
     "description": "",
-    "version": "0.0.3",
+    "version": "0.0.4",
     "icon": "icon/logo.png",
     "engines": {
         "vscode": "^1.53.0"
