@@ -8,7 +8,7 @@
             "include": "#modules"
         },
         {
-            "include": "#strings"
+            "include": "#digits"
         },
         {
             "include": "#chars"
@@ -17,7 +17,7 @@
             "include": "#operators"
         },
         {
-            "include": "#digits"
+            "include": "#strings"
         },
         {
             "include": "#types"
@@ -198,7 +198,11 @@
             "end": "(\\w)*",
             "endCaptures": {
                 "0": {
-                    "name": "variable.other.readwrite.vivian"
+                    "patterns": [{
+                        "include": "#digits"
+                    }, {
+                        "name": "variable.other.readwrite.vivian"
+                    }]
                 }
             }
         },
