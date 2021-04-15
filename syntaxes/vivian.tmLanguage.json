@@ -201,7 +201,8 @@
                     "patterns": [{
                         "include": "#digits"
                     }, {
-                        "name": "variable.other.readwrite.vivian"
+                        "name": "variable.other.readwrite.vivian",
+                        "match": ".*"
                     }]
                 }
             }
