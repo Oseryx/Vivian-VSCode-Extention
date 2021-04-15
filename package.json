@@ -2,7 +2,7 @@
     "name": "vivian",
     "displayName": "vivian",
     "description": "",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "icon": "icon/logo.png",
     "engines": {
         "vscode": "^1.53.0"
@@ -12,16 +12,25 @@
     ],
     "publisher": "Oseryx",
     "contributes": {
-        "languages": [{
-            "id": "vivian",
-            "aliases": ["viv", "vivian"],
-            "extensions": [".viv"],
-            "configuration": "./language-configuration.json"
-        }],
-        "grammars": [{
-            "language": "vivian",
-            "scopeName": "source.viv",
-            "path": "./syntaxes/vivian.tmLanguage.json"
-        }]
+        "languages": [
+            {
+                "id": "vivian",
+                "aliases": [
+                    "viv",
+                    "vivian"
+                ],
+                "extensions": [
+                    ".viv"
+                ],
+                "configuration": "./language-configuration.json"
+            }
+        ],
+        "grammars": [
+            {
+                "language": "vivian",
+                "scopeName": "source.viv",
+                "path": "./syntaxes/vivian.tmLanguage.json"
+            }
+        ]
     }
 }
