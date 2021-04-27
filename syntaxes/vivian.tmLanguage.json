@@ -51,7 +51,7 @@
         "keywords": {
             "patterns": [{
                 "name": "keyword.control.vivian",
-                "match": "\\b(construct|if|else|do|while|for|break|continue|return|this)\\b"
+                "match": "\\b(construct|destruct|get|set|if|else|do|while|for|break|continue|return|this)\\b"
             }]
         },
         "strings": {
@@ -200,6 +200,8 @@
                 "0": {
                     "patterns": [{
                         "include": "#digits"
+                    }, {
+                        "include": "#keywords"
                     }, {
                         "name": "variable.other.readwrite.vivian",
                         "match": ".*"
