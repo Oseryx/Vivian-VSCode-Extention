@@ -1,5 +1,10 @@
 # Vivian Language Support
 
+This repo will be archived soon, a new version will come out, why archiving ? Simple, the regex is horrible I've done this while learning vscode api at the same time, I prefer restarting over with way better features:
+- Semantic highlight
+- Autocompletion
+- Debugging
+
 This is the README of the vivian's vscode extension, responsible for the syntax highlighting for now, it stills in beta
 For now it supports:
 - Keywords
